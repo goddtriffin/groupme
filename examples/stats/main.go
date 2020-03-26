@@ -27,7 +27,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	stats := newStats(5)
+	stats := newStats()
 	stats.parseMessages(messages)
 
 	err = bot.Post(stats.sprintTopOfThePops(5))
@@ -46,6 +46,11 @@ func main() {
 	}
 
 	err = bot.Post(stats.sprintTopPoster(5))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = bot.Post(stats.sprintFrequencyAnalysis(5))
 	if err != nil {
 		log.Fatal(err)
 	}
