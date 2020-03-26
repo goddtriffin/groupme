@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"log"
 	"os"
 
@@ -31,8 +30,22 @@ func main() {
 	stats := newStats(5)
 	stats.parseMessages(messages)
 
-	err = bot.Post(fmt.Sprintf("%s\n%s\n%s",
-		stats.sprintTopOfThePops(5), stats.sprintTopOfTheSimps(5), stats.sprintTopOfTheNarcissists(5)))
+	err = bot.Post(stats.sprintTopOfThePops(5))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = bot.Post(stats.sprintTopOfTheSimps(5))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = bot.Post(stats.sprintTopOfTheNarcissists(5))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = bot.Post(stats.sprintTopPoster(5))
 	if err != nil {
 		log.Fatal(err)
 	}
