@@ -2,7 +2,7 @@
 
 This is the original GroupMe library for Go created by Todd Everett Griffin.
 
-This library supports most if not all of the api.groupme.com/v3 REST calls.
+This library supports most if not all of the `api.groupme.com/v3` REST calls.
 
 ## Installing
 
