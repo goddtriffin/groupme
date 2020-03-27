@@ -21,6 +21,12 @@ var (
 	ErrServiceUnavailable  = errors.New("503 Service Unavailable")
 )
 
+// Meta is the error response from the GroupMe API.
+type Meta struct {
+	Code   int      `json:"code"`
+	Errors []string `json:"errors"`
+}
+
 func parseError(statusCode int, status string) error {
 	switch statusCode {
 	case http.StatusNotModified:

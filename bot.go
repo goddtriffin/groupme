@@ -15,6 +15,13 @@ type Bot struct {
 	AvatarURL string
 }
 
+// BotPost is a message from a Bot.
+type BotPost struct {
+	BotID       string       `json:"bot_id"`
+	Text        string       `json:"text"`
+	Attachments []Attachment `json:"attachments"`
+}
+
 // NewBot returns a new GroupMe Bot.
 func NewBot(baseURL, ID, groupID, groupName, avatarURL string) Bot {
 	return Bot{
@@ -26,7 +33,7 @@ func NewBot(baseURL, ID, groupID, groupName, avatarURL string) Bot {
 	}
 }
 
-// Post . . . TODO
+// Post posts a message.
 func (b *Bot) Post(message string, attachments []Attachment) error {
 	// generate URL for request
 	URL, err := createURL(b.BaseURL, "/bots/post", "")
