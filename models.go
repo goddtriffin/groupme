@@ -1,5 +1,13 @@
 package groupme
 
+// A polymorphic list of Message attachment types.
+const (
+	ImageAttachment    = "image"
+	LocationAttachment = "location"
+	SplitAttachment    = "split"
+	EmojiAttachment    = "emoji"
+)
+
 // Meta is a
 type Meta struct {
 	Code   int      `json:"code"`
