@@ -49,6 +49,7 @@ type Attachment struct {
 
 // BotPost . . . TODO
 type BotPost struct {
-	BotID string `json:"bot_id"`
-	Text  string `json:"text"`
+	BotID       string       `json:"bot_id"`
+	Text        string       `json:"text"`
+	Attachments []Attachment `json:"attachments"`
 }
