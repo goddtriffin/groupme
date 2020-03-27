@@ -27,7 +27,7 @@ func NewBot(baseURL, ID, groupID, groupName, avatarURL string) Bot {
 }
 
 // Post . . . TODO
-func (b *Bot) Post(message string) error {
+func (b *Bot) Post(message string, attachments []Attachment) error {
 	// generate URL for request
 	URL, err := createURL(b.BaseURL, "/bots/post", "")
 	if err != nil {
@@ -35,8 +35,9 @@ func (b *Bot) Post(message string) error {
 	}
 
 	post := BotPost{
-		BotID: b.ID,
-		Text:  message,
+		BotID:       b.ID,
+		Text:        message,
+		Attachments: attachments,
 	}
 
 	jsonStr, err := json.Marshal(post)
