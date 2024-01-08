@@ -42,7 +42,7 @@ func main() {
 				printMemberAddedEvent(message.Event)
 			case groupme.MemberRemovedEventType:
 				printMemberRemovedEvent(message.Event)
-			case groupme.NicknameChangedEventType:
+			case groupme.MemberNicknameChangedEventType:
 				printNicknameChangedEvent(message.Event)
 			}
 		}

@@ -2,9 +2,26 @@ package groupme
 
 // Event types.
 const (
-	MemberAddedEventType     = "membership.announce.added"
-	MemberRemovedEventType   = "membership.notifications.removed"
-	NicknameChangedEventType = "membership.nickname_changed"
+	MemberAddedEventType           = "membership.announce.added"
+	MemberRemovedEventType         = "membership.notifications.removed"
+	MemberExitedEventType          = "membership.notifications.exited"
+	MemberRejoinedEventType        = "membership.announce.rejoined"
+	MemberNicknameChangedEventType = "membership.nickname_changed"
+	MemberAvatarChangedEventType   = "membership.avatar_changed"
+
+	GroupTypeChangeEventType   = "group.type_change"
+	GroupAvatarChangeEventType = "group.avatar_change"
+	GroupTopicChangeEventType  = "group.topic_change"
+
+	PollCreatedEventType  = "poll.created"
+	PollReminderEventType = "poll.reminder"
+	PollFinishedEventType = "poll.finished"
+
+	CalendarCreatedEventType         = "calendar.event.created"
+	CalendarStartingEventType        = "calendar.event.starting"
+	CalendarMemberGoinEventType      = "calendar.event.user.going"
+	CalendarMemberUndecidedEventType = "calendar.event.user.undecided"
+	CalendarMemberNotGoingEventType  = "calendar.event.user.not_going"
 )
 
 // EventData keys.
@@ -32,11 +49,14 @@ type UsersEventData []UserEventData
 
 // Exists returns whether Event exists or not.
 func (e *Event) Exists() bool {
-	return len(e.Data) > 0
+	return e.Type == ""
 }
 
 // ParseUserEventData parses a UserEventData from an interface if possible.
 func ParseUserEventData(i interface{}) (UserEventData, bool) {
+	
+
+
 	d := UserEventData{}
 
 	m, ok := i.(map[string]interface{})
